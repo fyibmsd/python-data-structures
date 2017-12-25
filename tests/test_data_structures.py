@@ -5,7 +5,8 @@ from src import (
     stack,
     singly_linked_list,
     double_linked_list,
-    undirected_graph
+    undirected_graph,
+    binary_search_tree
 )
 
 
@@ -141,3 +142,32 @@ class TestUndirectedGraph(unittest.TestCase):
         self.assertEqual(self.ug1.edge_count(), 1)
         self.assertEqual(self.ug2.edge_count(), 2)
         self.assertEqual(self.ug3.edge_count(), 3)
+
+
+class TestBinarySearchTree(unittest.TestCase):
+
+    def test_size(self):
+        self.bst = binary_search_tree.BinarySearchTree()
+        self.assertEqual(self.bst.size(), 0)
+
+    """
+                    4
+                 /     \
+              2           6
+            /   \       /   \
+           1     3     5     7
+          -^--^--^--^--^--^--^-
+           1  2  3  4  5  6  7
+    """
+
+    def test_bst(self):
+        self.bst = binary_search_tree.BinarySearchTree()
+
+        self.assertEqual(self.bst.contains(2), False)
+
+        for i in [4, 2, 6, 1, 3, 5, 7]:
+            self.bst.set(i)
+
+        self.assertEqual(self.bst.size(), 7)
+        self.assertTrue(self.bst.contains(5))
+        self.assertFalse(self.bst.contains(8))
