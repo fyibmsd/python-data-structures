@@ -6,7 +6,8 @@ from src import (
     singly_linked_list,
     double_linked_list,
     undirected_graph,
-    binary_search_tree
+    binary_search_tree,
+    priority_queue
 )
 
 
@@ -50,6 +51,21 @@ class TestStack(unittest.TestCase):
 
     def test_stack_using_linked_list(self):
         self.exec_stack_test(stack.StackUsingLinkedList)
+
+
+class TestPrioirtyQueue(unittest.TestCase):
+    def test_priority_queue(self):
+        queue = priority_queue.PriorityQueue()
+        self.assertTrue(queue.is_empty())
+        queue.insert('A', 10)
+        queue.insert('B', 20)
+        queue.insert('C', 5)
+
+        self.assertEqual(queue.size(), 3)
+
+        self.assertEqual(queue.dequeue(), ('B', 20))
+        self.assertEqual(queue.dequeue(), ('A', 10))
+        self.assertEqual(queue.dequeue(), ('C', 5))
 
 
 class TestSinglyLinkedList(unittest.TestCase):
