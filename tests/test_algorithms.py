@@ -3,7 +3,7 @@ import unittest
 
 from src.undirected_graph import UndirectedGraph
 from algorithms.sorts import (
-    bubble_sort, quick_sort, insertion_sort, selection_sort
+    bubble_sort, quick_sort, insertion_sort, selection_sort, merge_sort
 )
 from algorithms.deep_first_search import DeepFirstSearch
 
@@ -18,6 +18,7 @@ class TestSort(unittest.TestCase):
         self.exec_sort(quick_sort.quick_sort)
         self.exec_sort(insertion_sort.insertion_sort)
         self.exec_sort(selection_sort.selection_sort)
+        self.exec_sort(merge_sort.merge_sort)
 
 
 class TestDFS(unittest.TestCase):
