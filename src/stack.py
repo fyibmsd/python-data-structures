@@ -3,8 +3,10 @@
     LIFO
 """
 
+from .double_linked_list import DoubleLinkedList
 
-class Stack:
+
+class StackUsingArray:
     def __init__(self):
         self._stack = []
 
@@ -19,3 +21,20 @@ class Stack:
 
     def size(self):
         return len(self._stack)
+
+
+class StackUsingLinkedList:
+    def __init__(self):
+        self._stack = DoubleLinkedList()
+
+    def add(self, value):
+        self._stack.lpush(value)
+
+    def remove(self):
+        return self._stack.lpop()
+
+    def is_empty(self):
+        return self._stack.is_empty()
+
+    def size(self):
+        return self._stack.size

@@ -26,8 +26,8 @@ class TestQueue(unittest.TestCase):
 
 
 class TestStack(unittest.TestCase):
-    def test_stack(self):
-        self.stack = stack.Stack()
+    def exec_stack_test(self, stack):
+        self.stack = stack()
 
         for item in [1, 2, 8, 5, 6]:
             self.stack.add(item)
@@ -38,6 +38,12 @@ class TestStack(unittest.TestCase):
         self.assertEqual(self.stack.remove(), 8)
         self.assertEqual(self.stack.remove(), 2)
         self.assertFalse(self.stack.is_empty())
+
+    def test_stack_using_array(self):
+        self.exec_stack_test(stack.StackUsingArray)
+
+    def test_stack_using_linked_list(self):
+        self.exec_stack_test(stack.StackUsingLinkedList)
 
 
 class TestSinglyLinkedList(unittest.TestCase):
