@@ -11,8 +11,8 @@ from src import (
 
 
 class TestQueue(unittest.TestCase):
-    def test_queue(self):
-        self.queue = queue.Queue()
+    def exec_queue_test(self, queue):
+        self.queue = queue()
 
         for item in [1, 2, 8, 5, 6]:
             self.queue.enqueue(item)
@@ -23,6 +23,12 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(self.queue.dequeue(), 8)
         self.assertEqual(self.queue.dequeue(), 5)
         self.assertFalse(self.queue.is_empty())
+
+    def test_queue_using_array(self):
+        self.exec_queue_test(queue.QueueUsingArray)
+
+    def test_queue_using_linked_list(self):
+        self.exec_queue_test(queue.QueueUsingLinkedList)
 
 
 class TestStack(unittest.TestCase):

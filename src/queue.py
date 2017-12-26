@@ -3,8 +3,10 @@
     FIFO
 """
 
+from .double_linked_list import DoubleLinkedList
 
-class Queue:
+
+class QueueUsingArray:
     def __init__(self):
         self._queue = []
 
@@ -19,3 +21,20 @@ class Queue:
 
     def size(self):
         return len(self._queue)
+
+
+class QueueUsingLinkedList:
+    def __init__(self):
+        self._queue = DoubleLinkedList()
+
+    def enqueue(self, value):
+        self._queue.lpush(value)
+
+    def dequeue(self):
+        return self._queue.rpop()
+
+    def is_empty(self):
+        return self._queue.is_empty()
+
+    def size(self):
+        return self._queue.size
