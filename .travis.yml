@@ -1,0 +1,7 @@
+language: python
+
+before_script:
+  - pip install pytest
+
+script:
+  python run_tests.py
