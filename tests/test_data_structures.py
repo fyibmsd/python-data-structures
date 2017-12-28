@@ -7,7 +7,8 @@ from src import (
     double_linked_list,
     undirected_graph,
     binary_search_tree,
-    priority_queue
+    priority_queue,
+    binary_tree
 )
 
 
@@ -170,6 +171,53 @@ class TestUndirectedGraph(unittest.TestCase):
         self.assertEqual(self.ug1.edge_count(), 1)
         self.assertEqual(self.ug2.edge_count(), 2)
         self.assertEqual(self.ug3.edge_count(), 3)
+
+
+class TestBinaryTree(unittest.TestCase):
+    """
+        url: https://en.wikipedia.org/wiki/Tree_traversal
+                    F
+                 /     \
+              B           G
+            /   \           \
+           A     D           I
+               /  \         /
+              C    E       H
+
+        Pre-order: F, B, A, D, C, E, G, I, H.
+    """
+
+    def create_tree(self):
+        tree = binary_tree.BinaryTree()
+        tree.root = binary_tree.Leaf('F')
+
+        tree.root.left = binary_tree.Leaf('B')
+        tree.root.left.left = binary_tree.Leaf('A')
+        tree.root.left.right = binary_tree.Leaf('D')
+        tree.root.left.right.left = binary_tree.Leaf('C')
+        tree.root.left.right.right = binary_tree.Leaf('E')
+
+        tree.root.right = binary_tree.Leaf('G')
+        tree.root.right.right = binary_tree.Leaf('I')
+        tree.root.right.right.left = binary_tree.Leaf('H')
+
+        return tree
+
+    def test_invert(self):
+        tree = self.create_tree()
+        self.assertEqual(str(tree), "FBADCEGIH")
+
+        tree.invert(tree.root)
+
+        # tree.pretty_print()
+        self.assertEqual(str(tree), "FGIHBDECA")
+
+    def test_traversal(self):
+        tree = self.create_tree()
+
+        self.assertEqual(tree.pre_order(tree.root), "FBADCEGIH")
+        self.assertEqual(tree.in_order(tree.root), "ABCDEFGHI")
+        self.assertEqual(tree.post_order(tree.root), "ACEDBHIGF")
 
 
 class TestBinarySearchTree(unittest.TestCase):
