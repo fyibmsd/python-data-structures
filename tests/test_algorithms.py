@@ -5,7 +5,6 @@ from src.undirected_graph import UndirectedGraph
 from algorithms.sorts import (
     bubble_sort, quick_sort, insertion_sort, selection_sort, merge_sort
 )
-from algorithms.deep_first_search import DeepFirstSearch
 
 
 class TestSort(unittest.TestCase):
@@ -35,5 +34,3 @@ class TestDFS(unittest.TestCase):
         for src, dest in [[0, 1], [0, 2], [0, 5], [1, 2],
                           [2, 3], [2, 4], [3, 4], [3, 5]]:
             self.ug.add_edge(src, dest)
-
-        DeepFirstSearch(self.ug, 0)
