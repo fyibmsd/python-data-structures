@@ -1,5 +1,8 @@
 ### 数据结构和算法 (Python描述)
 
+[![Build Status](https://travis-ci.org/fyibmsd/python-data-structures.svg?branch=master)](https://travis-ci.org/fyibmsd/python-data-structures)
+
+
 #### 排序算法
 - bubble sort
 - insert sort
